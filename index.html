@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planelog24.de</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 20px;
+        }
+
+        .code-section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: calc(100% - 20px);
+            height: 300px;
+            border: none;
+            outline: none;
+            resize: none;
+            background-color: #f8f8f8;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+            overflow: auto;
+            margin-bottom: 10px;
+        }
+
+        #textarea1 {
+            width: calc(100% - 20px);
+            height:100px;
+            border: none;
+            outline: none;
+            resize: none;
+            background-color: #f8f8f8;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+            overflow: auto;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            outline: none;
+            background-color: #f8f8f8;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            color: #333;
+        }
+
+        ::placeholder{
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Planelog24.de Vorstellung</h1>
+    </header>
+
+    <main>
+        <div class="code-section" id="html-section">
+            <h2>Unsere Idee</h2>
+            <textarea id="textarea1" readonly>
+Wir haben eine Datenbank über „alle“ Flugzeuge in Deutschland gemacht, da Joris sich viel mit Flugzeugen beschäftigt.  Angefangen haben wir damit, eine Tabellenstruktur in Xampp zu erstellen, das wollten wir in der zweiten Stunde auch eigentlich weiter machen, leider lies sich MySQL aber nicht mehr starten, darum haben wir uns dann an die HTML-Seite gesetzt. Bis jetzt haben wir die HTML-Seite und auch schon die Verbindung mit PHP fertig gemacht, in der Datenbank sind allerdings noch keine Daten, darum ist noch nichts Abrufbar.
+                            </textarea>
+        </div>
+        
+
+        <div class="code-section" id="html-section">
+            <h2>HTML Code</h2>
+            <textarea class="html" readonly>
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <!-- Meta-Tags und Titel hier belassen -->
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>PlaneLog24.de</title>
+                    <link rel="stylesheet" href="styles.css">
+                </head>
+                <body>
+                    <header>
+                        <h1>PlaneLog24</h1>
+                    </header>
+                    <main>
+                        <form role="search" method="get" action="server_script.php">
+                            <label for="search">Search for stuff</label>
+                            <input id="search" type="search" placeholder="Search..." autofocus required />
+                            
+                            
+                        </form>
+                        <br>
+                        <!-- Platz für Daten aus der Datenbank -->
+                        <div id="databaseResults">
+                            <?php include('server_script.php'); ?>
+                        </div>
+                    </main>
+                    <footer>
+                        <p>&copy; 2024 PlaneLog24.de</p>
+                    </footer>
+                    <script src="script.js"></script>
+                </body>
+                </html>
+                
+            </textarea>
+        </div>
+
+        <div class="code-section" id="css-section">
+            <h2>CSS Code</h2>
+            <textarea class="css" readonly>
+                body, html {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background: var(--color-dark);
+                    min-height: 100vh;
+                    box-sizing: border-box;
+                    height: 100%;
+                    font-size: 10px;
+                  }
+                  
+                  *, *::before, *::after {
+                    box-sizing: inherit;
+                  }
+                  
+                  header, footer {
+                    background-color: #333;
+                    color: white;
+                    text-align: center;
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    font-size: x-large;
+                  }
+                  
+                  footer {
+                    padding: 4em;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                  }
+                  
+                  main {
+                    padding: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  }
+                  
+                  :root {
+                    --rad: .7rem;
+                    --dur: .3s;
+                    --color-dark: #ffffff;
+                    --color-light: rgb(184, 184, 184);
+                    --color-brand: rgb(184, 184, 184);
+                    --font-fam: 'Lato', sans-serif;
+                    --height: 5rem;
+                    --btn-width: 6rem;
+                    --bez: cubic-bezier(0, 0, 0.43, 1.49);
+                  }
+                  
+                  form {
+                    position: relative;
+                    width: 30rem;
+                    background: var(--color-brand);
+                    border-radius: var(--rad);
+                  }
+                  
+                  input {
+                    height: var(--height);
+                    font-family: var(--font-fam);
+                    border: 0;
+                    color: white;
+                    font-size: 1.8rem;
+                  }
+                  
+                  input[type="search"] {
+                    outline: 0;
+                    width: 100%;
+                    background: var(--color-light);
+                    padding: 0 1.6rem;
+                    border-radius: var(--rad);
+                    appearance: none;
+                    transition: all var(--dur) var(--bez);
+                    transition-property: width, border-radius;
+                    z-index: 1;
+                    position: relative;
+                  }
+                  
+                  label {
+                    position: absolute;
+                    clip: rect(1px, 1px, 1px, 1px);
+                    padding: 0;
+                    border: 0;
+                    height: 1px;
+                    width: 1px;
+                    overflow: hidden;
+                  }
+                  
+            </textarea>
+        </div>
+
+        <div class="code-section" id="php-section">
+            <h2>PHP Code</h2>
+            <textarea class="php" readonly>
+                <?php
+    $servername = "127.0.0.1"; 
+    $username = "root"; 
+    $password = ""; 
+    $dbname = "yourdatabasename"; 
+
+
+        // Verbindung herstellen
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Überprüfen der Verbindung
+        if ($conn->connect_error) {
+           die("Verbindung fehlgeschlagen: " . $conn->connect_error);
+        } else {
+            echo "Erfolgreich verbunden!";
+        }
+        ?>
+
+            </textarea>
+        </div>
+
+        <div class="code-section" id="js-section">
+            <h2>JavaScript Code</h2>
+            <textarea class="javascript" readonly>
+                function searchDatabase() {
+                    var searchQuery = document.getElementById("search").value;
+                
+                    // Hier kannst du AJAX oder Fetch verwenden, um Daten vom Server (PHP) abzurufen
+                    // Beispiel mit Fetch API:
+                    fetch('search.php?q=' + encodeURIComponent(searchQuery))
+                        .then(response => response.json())
+                        .then(data => {
+                            // Verarbeite die Daten und aktualisiere die Webseite
+                            console.log(data);
+                        })
+                        .catch(error => console.error('Fehler:', error));
+                }
+            </textarea>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
